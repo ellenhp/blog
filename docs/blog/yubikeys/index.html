@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html
+  class=""
+  lang="en-us"
+  prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
+>
+  <head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="description" content="" />
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+<meta name="keywords" content="">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content="" />
+<meta property="og:title" content="Using Yubikeys for PGP with secure key backups" />
+<meta property="og:site_name" content="Ellen&#39;s blog!" />
+<meta property="og:image" content="" />
+<meta property="og:image:type" content="image/jpeg" />
+<meta property="og:image:width" content="" />
+<meta property="og:image:height" content="" />
+<meta property="og:url" content="http://blog.ellenhp.me/blog/yubikeys/" />
+<meta property="og:locale" content="en-us" />
+<meta property="article:published_time" content="2020-09-07
+" /> <meta property="article:modified_time" content="2020-09-07
+" />
+
+
+
+
+
+
+    <title>Using Yubikeys for PGP with secure key backups</title>
+    <link rel="canonical" href="http://blog.ellenhp.me/blog/yubikeys/" />
+
+
+    <link
+  rel="stylesheet"
+  href="https://unpkg.com/tachyons@4.11.1/css/tachyons.min.css"
+/>
+
+<link rel="stylesheet" href="http://blog.ellenhp.me/css/style.css" />
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/highlightjs@9.12.0/styles/github-gist.css"
+/>
+
+
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  </head>
+
+
+<body
+  lang="en-us"
+  class="sans-serif w-90 w-60-ns center center-ns mv2 mv5-ns"
+  itemscope
+  itemtype="http://schema.org/Article"
+>
+  
+  <span class="b">/ </span>
+  <a
+    href="http://blog.ellenhp.me/"
+    class="b bb bw1 pb1 no-underline black"
+    >Ellen&#39;s blog!</a
+  >
+
+  <section id="main" class="mt5">
+    <h1 itemprop="name" id="title">Using Yubikeys for PGP with secure key backups</h1>
+
+    <article itemprop="articleBody" id="content" class="w-90 lh-copy">
+      <p>This article was originally written in 2018.</p>
+<p>First, I really ought to say that I&rsquo;m not recommending people do this, because everyone has their own appetite for risk, and everyone faces different threats online. That said, I did want to write up my own approach to keeping PGP keys safe and secure while ensuring I can restore a backup if I ever need to.</p>
+<h2 id="premise">Premise</h2>
+<p>I recently got some Yubikeys for to use as U2F devices to lock down my Google, Facebook, Github and Twitter accounts. I got two so that I&rsquo;d have N+1 redundancy in case I lose one or one of them fails in a few years. I&rsquo;m thinking about getting more, because I really don&rsquo;t want to lose access to my accounts, but that&rsquo;s beside the point. After playing around with them for a bit, I started thinking about using them for PGP. I&rsquo;m no expert on PGP, but it seems like a good way to encrypt files that I only want myself to be able to decrypt. It&rsquo;s &ldquo;supposed&rdquo; to be used for email, but I have exactly one friend who uses PGP for email and I just use Signal to talk to her anyway, because it&rsquo;s 2018.</p>
+<h2 id="concerns">Concerns</h2>
+<p>I like that I can put a private key onto the YubiKey and know that it&rsquo;s nominally impossible to export it from the device, but that poses problems if I want N+1 redundancy, since I&rsquo;ll need to either store a backup (encrypted or otherwise) or just trust that I&rsquo;ll never lose both keys. Unfortunately, I&rsquo;m an expert at losing small things. I&rsquo;m also very uncomfortable with the idea of storing a password-protected key and just trusting that I&rsquo;ll both remember the password and never use the password for something else. I could put it in a password manager, but at that point the password manager is my weakest link. What I want out of PGP is to have a way to encrypt something that cannot be cracked without both physically robbing me and figuring out my password via malware, phishing or coersion.</p>
+<p>So passwords are out for encrypting my backup, which leaves PKI as the only viable encryption scheme, as far as I know. After thinking for a bit, I had the idea of encrypting the backup with my own public key. At first glance this idea seems very silly, since I&rsquo;ll need my private key to decrypt my own private key. But as I thought about it more, I realized that&rsquo;s exactly what I want. If I lose one YubiKey, all I have to do is decrypt my backup with the other and export the keys onto a newly-purchased YubiKey to get back to N+1.</p>
+<h2 id="security-implications">Security Implications</h2>
+<p>This is the one section you should probably take with several grains of salt, or maybe a salt lamp, since those are kinda cool. I&rsquo;m not a security engineer. I know the basics of crypto but that&rsquo;s about it.</p>
+<p>Basically, I claim that an attacker would need to get access to one of my YubiKeys, my PIN for that YubiKey, and my encrypted backup in order to get a copy of my private key. But at that point, if she has my YubiKey and my PIN, my private key is already compromised. So to my untrained eye, it seems like I have absolutely nothing to lose by uploading an encrypted backup of my private key to Google Drive or wherever else I want to put it. Which is wonderful because it means I have the security offered by keeping my keys off my filesystem and out of my safe, and the durability offered by having a backup of my key on Google Drive.</p>
+<p>Besides, even if my key is compromised, I don&rsquo;t actually use PGP for anything important so I&rsquo;ll be fine :)</p>
+
+    </article>
+  </section>
+
+  <footer>
+    <div>
+      <p class="f6 gray mt6 lh-copy">
+        
+      </p>
+    </div>
+  </footer>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/highlight.min.js"></script>
+
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+
+  </body>
+</html>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ellen&#39;s blog!</title>
-    <link>http://blog.ellenhp.me/</link>
-    <description>Recent content on Ellen&#39;s blog!</description>
+    <title>Blogs on Ellen&#39;s blog!</title>
+    <link>http://blog.ellenhp.me/blog/</link>
+    <description>Recent content in Blogs on Ellen&#39;s blog!</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 07 Sep 2020 12:22:11 -0700</lastBuildDate>
     
-	<atom:link href="http://blog.ellenhp.me/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://blog.ellenhp.me/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -29,15 +29,6 @@
       <description>This article was originally written in 2018.
 First, I really ought to say that I&amp;rsquo;m not recommending people do this, because everyone has their own appetite for risk, and everyone faces different threats online. That said, I did want to write up my own approach to keeping PGP keys safe and secure while ensuring I can restore a backup if I ever need to.
 Premise I recently got some Yubikeys for to use as U2F devices to lock down my Google, Facebook, Github and Twitter accounts.</description>
-    </item>
-    
-    <item>
-      <title>About me!</title>
-      <link>http://blog.ellenhp.me/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://blog.ellenhp.me/about/</guid>
-      <description>Hello! I&amp;rsquo;m Ellen and welcome to my humble blog. There might be useful information here depending on what you&amp;rsquo;re looking for, but no promises. Oh, before you go! Reminder that Black lives matter and also cops r bad.</description>
     </item>
     
   </channel>

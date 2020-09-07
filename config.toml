@@ -1,3 +1,11 @@
 baseURL = "http://blog.ellenhp.me/"
 languageCode = "en-us"
 title = "Ellen's blog!"
+
+[[params.menu]]
+  name = "blog!"
+  url = "blog/"
+
+[[params.menu]]
+  name = "about!"
+  url = "about/"
