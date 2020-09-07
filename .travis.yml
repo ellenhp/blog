@@ -7,6 +7,7 @@ install:
 script:
   - hugo version
   - hugo --theme=hugo-theme-basic
+  - rm .gitignore # remove the restriction on updating /public
 
 deploy:
   provider: pages
