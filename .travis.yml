@@ -1,0 +1,25 @@
+addons:
+  apt:
+    packages:
+      - hugo
+
+install:
+  - wget "https://github.com/gohugoio/hugo/releases/download/v${HUGO_RELEASE}/hugo_extended_${HUGO_RELEASE}_Linux-64bit.deb"
+  - sudo dpkg -i hugo*.deb
+  - rm -rf public || exit 0
+
+script:
+  - hugo version
+  - hugo --theme=hugo-theme-basic
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  keep_history: true
+  on:
+    branch: master
+
+env:
+  global:
+    - HUGO_RELEASE=0.74.3
